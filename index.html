@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doña Gracia Nasi · Film Proposal | TodoAI Studio</title>
+<meta name="description" content="A documentary film on Doña Gracia Nasi, roughly five minutes. Storyboard, recorded narration and proposal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* palette lifted from the film's own frame: golden hour, limestone, olive, velvet */
+    --void:#0B0906;
+    --deep:#141009;
+    --stone:#1E1811;
+    --line:rgba(214,186,140,.16);
+    --line-2:rgba(214,186,140,.30);
+
+    --cream:#F2EBDD;
+    --sand:#D9C6A4;
+    --muted:#A2937B;
+    --faint:#6E6353;
+
+    --gold:#C9A24B;
+    --gold-lit:#E8CB86;
+    --olive:#7E8B62;
+    --coral:#F2542D;   /* TodoAI accent */
+
+    --he:'Heebo',-apple-system,'Segoe UI',Arial,sans-serif;
+    --serif:'Fraunces',Georgia,'Times New Roman',serif;
+    --mono:ui-monospace,Menlo,'SF Mono',monospace;
+
+    --pad:clamp(20px,5vw,40px);
+    --maxw:1080px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--he);
+    background:var(--void);
+    color:var(--cream);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    position:relative;
+  }
+  /* The hero keeps the film wide open. Below it the long-form copy needs a floor,
+     so a scrim fades in right after the fold and holds contrast all the way down. */
+  body::before{
+    content:'';position:absolute;left:0;right:0;top:100svh;bottom:0;
+    z-index:-1;pointer-events:none;
+    background:linear-gradient(180deg,
+      rgba(11,9,6,0) 0,
+      rgba(11,9,6,.70) 300px,
+      rgba(11,9,6,.86) 900px,
+      rgba(11,9,6,.90) 100%);
+  }
+
+  /* ══ language switching ══
+     every translatable node carries .en / .he; the root lang decides which shows */
+  html[lang="en"] .he{display:none!important}
+  html[lang="he"] .en{display:none!important}
+  html[lang="he"] .num-ltr{direction:ltr;unicode-bidi:isolate;display:inline-block}
+
+  /* ══ background film ══ */
+  .bg{position:fixed;inset:0;z-index:-2;overflow:hidden;background:var(--void)}
+  .bg video,.bg img{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(1.08);
+    min-width:100%;min-height:100%;width:auto;height:auto;
+    object-fit:cover;
+    /* the 50% blur Avihai asked for: the scene reads, the detail does not compete */
+    filter:blur(13px) saturate(1.2) contrast(1.05);
+    opacity:1;
+  }
+  /* one veil, tuned so text stays legible but the frame is clearly visible.
+     The bright spot sits opposite the copy, so it flips with the writing direction. */
+  .bg::after{
+    content:'';position:absolute;inset:0;
+    background:
+      linear-gradient(180deg,rgba(11,9,6,.62) 0%,rgba(11,9,6,.50) 30%,rgba(11,9,6,.66) 62%,rgba(11,9,6,.84) 100%),
+      radial-gradient(130% 70% at 78% 22%,rgba(11,9,6,0) 0%,rgba(11,9,6,.58) 100%);
+  }
+  html[dir="rtl"] .bg::after{
+    background:
+      linear-gradient(180deg,rgba(11,9,6,.62) 0%,rgba(11,9,6,.50) 30%,rgba(11,9,6,.66) 62%,rgba(11,9,6,.84) 100%),
+      radial-gradient(130% 70% at 22% 22%,rgba(11,9,6,0) 0%,rgba(11,9,6,.58) 100%);
+  }
+  /* faint film grain so the blur does not read as a smudge */
+  .grain{
+    position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ══ top bar ══ */
+  .bar{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    padding:14px var(--pad);
+    background:linear-gradient(180deg,rgba(11,9,6,.92),rgba(11,9,6,0));
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  }
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+  .brand img{width:30px;height:30px;border-radius:8px;display:block}
+  .brand span{font-size:15px;font-weight:800;color:var(--cream);letter-spacing:-.2px}
+
+  .lang{display:flex;border:1px solid var(--line-2);border-radius:4px;overflow:hidden}
+  .lang button{
+    font-family:var(--mono);font-size:11px;letter-spacing:.1em;font-weight:600;
+    padding:7px 13px;background:transparent;color:var(--muted);
+    border:0;cursor:pointer;transition:background .18s,color .18s;
+  }
+  .lang button:hover{color:var(--cream)}
+  .lang button[aria-pressed="true"]{background:var(--gold);color:var(--void)}
+
+  /* ══ layout ══ */
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+  section{padding-block:clamp(56px,9vw,104px)}
+  .eyebrow{
+    font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--gold);margin-bottom:18px;
+  }
+  h2{
+    font-family:var(--serif);font-weight:600;
+    font-size:clamp(26px,4.4vw,40px);line-height:1.12;letter-spacing:-.5px;
+    margin-bottom:16px;
+  }
+  html[lang="he"] h2{font-family:var(--he);font-weight:800;letter-spacing:-.8px}
+  .lede{font-size:clamp(16px,2vw,18.5px);color:var(--sand);max-width:62ch;font-weight:300}
+  .rule{height:1px;background:var(--line);border:0}
+
+  /* ══ hero ══ */
+  .hero{
+    min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+    padding-block:clamp(96px,14vh,150px) clamp(48px,8vh,84px);
+  }
+  .hero .kicker{
+    font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--coral);font-weight:700;margin-bottom:22px;
+  }
+  .hero h1{
+    font-family:var(--serif);font-weight:700;
+    font-size:clamp(42px,9vw,86px);line-height:.98;letter-spacing:-2.5px;
+    text-wrap:balance;
+  }
+  html[lang="he"] .hero h1{font-family:var(--he);font-weight:900;letter-spacing:-2px;line-height:1.05}
+  .hero h1 em{
+    display:block;font-style:normal;font-size:.42em;font-weight:400;
+    letter-spacing:.02em;color:var(--gold-lit);margin-top:18px;line-height:1.3;
+  }
+  html[lang="he"] .hero h1 em{font-weight:500;font-size:.4em}
+  .hero .sub{
+    margin-top:26px;font-size:clamp(16px,2.1vw,19px);color:var(--sand);
+    max-width:56ch;font-weight:300;
+  }
+
+  .facts{
+    display:flex;flex-wrap:wrap;gap:0;margin-top:44px;
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  }
+  .fact{
+    flex:1 1 150px;padding:20px 22px 18px;
+    border-inline-end:1px solid var(--line);
+  }
+  .fact:last-child{border-inline-end:0}
+  @media(max-width:620px){ /* stack cleanly rather than leaving a lone tile on its own row */
+    .fact{flex:1 1 100%;border-inline-end:0;border-bottom:1px solid var(--line)}
+    .fact:last-child{border-bottom:0}
+  }
+  .fact .v{
+    font-family:var(--mono);font-size:23px;font-weight:700;color:var(--gold-lit);line-height:1;
+    display:flex;align-items:center;gap:10px;
+  }
+  .fact .v .ico{ /* widescreen glyph, so the 16:9 reads at a glance */
+    width:26px;height:17px;flex:none;
+    fill:none;stroke:currentColor;stroke-width:2;opacity:.85;
+  }
+  .fact .k{font-size:12.5px;color:var(--muted);margin-top:9px;letter-spacing:.02em}
+
+  /* ══ audio ══ */
+  .listen{
+    margin-top:38px;padding:24px 26px;
+    border:1px solid var(--line-2);border-radius:6px;
+    background:linear-gradient(180deg,rgba(201,162,75,.07),rgba(201,162,75,.02));
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  }
+  .listen .lbl{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+  .listen .lbl b{font-size:15.5px;font-weight:700;color:var(--cream)}
+  .listen .lbl i{font-style:normal;font-family:var(--mono);font-size:11.5px;color:var(--gold);letter-spacing:.06em}
+  .listen .cap{font-size:13px;color:var(--muted);margin-top:14px}
+
+  /* custom transport, the native control is too bright for this page */
+  .player{display:flex;align-items:center;gap:16px}
+  .player .pp{
+    flex:none;width:46px;height:46px;border-radius:50%;
+    border:1px solid var(--gold);background:rgba(201,162,75,.14);
+    color:var(--gold-lit);cursor:pointer;display:grid;place-items:center;
+    transition:background .18s,transform .18s;
+  }
+  .player .pp:hover{background:rgba(201,162,75,.26);transform:scale(1.05)}
+  /* the default focus ring is bright blue and fights the palette */
+  .player .pp:focus-visible,.lang button:focus-visible,.sbtoggle:focus-visible,
+  .btn:focus-visible,.brand:focus-visible,.player .seek:focus-visible{
+    outline:2px solid var(--gold-lit);outline-offset:3px;
+  }
+  .player .pp:focus:not(:focus-visible){outline:none}
+  .player .pp svg{width:15px;height:15px;fill:currentColor;display:block}
+  .player .pp .ic-pause{display:none}
+  .player.playing .pp .ic-play{display:none}
+  .player.playing .pp .ic-pause{display:block}
+
+  .player .track{flex:1;min-width:0}
+  .player .seek{
+    height:4px;border-radius:2px;background:rgba(242,235,221,.16);
+    position:relative;cursor:pointer;overflow:hidden;
+  }
+  .player .seek::after{ /* taller invisible hit area, the visible line stays 4px */
+    content:'';position:absolute;inset:-11px 0;
+  }
+  .player .seek .fill{
+    position:absolute;inset-block:0;inset-inline-start:0;width:0%;
+    background:linear-gradient(90deg,var(--gold),var(--gold-lit));border-radius:2px;
+  }
+  .player .time{
+    display:flex;justify-content:space-between;margin-top:9px;
+    font-family:var(--mono);font-size:11px;color:var(--muted);
+    direction:ltr;unicode-bidi:isolate;
+  }
+
+  /* ══ includes grid ══ */
+  .inc{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:38px}
+  @media(max-width:820px){.inc{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:460px){.inc{grid-template-columns:1fr}}
+  .inc > div{background:rgba(20,16,9,.72);padding:24px 22px;backdrop-filter:blur(6px)}
+  .inc h3{font-size:15px;font-weight:700;color:var(--gold-lit);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+  .inc h3::before{content:'';width:5px;height:5px;background:var(--coral);border-radius:50%;flex:none}
+  .inc p{font-size:14px;color:var(--muted);line-height:1.6}
+
+  /* ══ storyboard ══ */
+  .sbhead{
+    display:flex;align-items:flex-end;justify-content:space-between;
+    gap:20px;flex-wrap:wrap;margin-bottom:26px;
+  }
+  .sbtoggle{
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;font-weight:600;
+    color:var(--gold);background:transparent;border:1px solid var(--line-2);
+    border-radius:4px;padding:9px 16px;cursor:pointer;transition:.18s;white-space:nowrap;
+  }
+  .sbtoggle:hover{background:rgba(201,162,75,.1);color:var(--gold-lit)}
+
+  .segment{margin-top:2px;border-top:1px solid var(--line-2)}
+  .seghead{
+    display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;
+    padding:22px 2px 16px;
+  }
+  .seghead .sn{font-family:var(--mono);font-size:12px;color:var(--gold);font-weight:600}
+  .seghead .st{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--cream);letter-spacing:-.2px}
+  html[lang="he"] .seghead .st{font-family:var(--he);font-weight:800}
+  .seghead .sr{margin-inline-start:auto;font-family:var(--mono);font-size:11.5px;color:var(--faint)}
+
+  .shot{
+    display:grid;grid-template-columns:62px 1fr 1fr;gap:0;
+    border-top:1px solid var(--line);
+  }
+  @media(max-width:760px){.shot{grid-template-columns:48px 1fr}.shot .hear{grid-column:2}}
+  .shot > div{padding:18px 20px}
+  .shot .idx{
+    padding:18px 8px;text-align:center;
+    background:rgba(20,16,9,.5);border-inline-end:1px solid var(--line);
+  }
+  .shot .idx .n{font-family:var(--mono);font-size:19px;font-weight:700;color:var(--gold-lit);line-height:1}
+  .shot .idx .d{font-family:var(--mono);font-size:10px;color:var(--faint);margin-top:6px}
+  .shot .see{border-inline-end:1px solid var(--line)}
+  @media(max-width:760px){.shot .see{border-inline-end:0;border-bottom:1px solid var(--line)}}
+
+  .tag{
+    font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:rgba(217,198,164,.60);display:block;margin-bottom:9px;
+  }
+  .shot .vis{font-size:14.5px;color:var(--cream);line-height:1.55}
+  .shot .mo{
+    margin-top:11px;padding-top:10px;border-top:1px dashed var(--line);
+    font-size:11.5px;color:var(--olive);font-family:var(--mono);line-height:1.5;
+    direction:ltr;unicode-bidi:isolate;
+  }
+  .shot .ost{margin-top:11px}
+  /* :not(.tag) so the label above the box does not get boxed itself */
+  .shot .ost > span:not(.tag){
+    display:block;font-size:12px;color:var(--sand);
+    background:rgba(201,162,75,.09);border-inline-start:2px solid var(--gold);
+    padding:6px 10px;margin-top:5px;line-height:1.4;
+  }
+  /* .rtl, not .he: on-screen text is literal film content and must show in both UI languages */
+  .shot .ost > span:not(.tag){direction:ltr;unicode-bidi:isolate}
+  .shot .ost > span.rtl{direction:rtl}
+  .shot .nar{font-size:15.5px;color:var(--cream);font-weight:400;line-height:1.6}
+  html[lang="en"] .shot .nar{font-family:var(--serif);font-weight:400}
+
+  /* ══ tribute ══ */
+  .tribute{
+    border-inline-start:2px solid var(--gold);
+    padding:6px 0 6px 28px;margin-top:8px;
+  }
+  html[dir="rtl"] .tribute{padding:6px 28px 6px 0}
+  .tribute p{
+    font-family:var(--serif);font-size:clamp(17px,2.4vw,21px);line-height:1.62;
+    color:var(--cream);font-weight:400;max-width:64ch;
+  }
+  html[lang="he"] .tribute p{font-family:var(--he);font-weight:400}
+  .tribute p + p{margin-top:18px}
+  .tribute b{color:var(--gold-lit);font-weight:600}
+
+  /* ══ price ══ */
+  .price{
+    border:1px solid var(--line-2);border-radius:6px;overflow:hidden;
+    background:linear-gradient(180deg,rgba(30,24,17,.86),rgba(20,16,9,.86));
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);margin-top:36px;
+  }
+  .price .top{
+    display:flex;align-items:flex-start;justify-content:space-between;
+    gap:24px;flex-wrap:wrap;padding:30px 30px 26px;
+  }
+  .price .what h3{font-family:var(--serif);font-size:22px;font-weight:600;color:var(--cream);margin-bottom:6px}
+  html[lang="he"] .price .what h3{font-family:var(--he);font-weight:800}
+  .price .what p{font-size:14px;color:var(--muted);max-width:44ch}
+  .price .amt{text-align:end;flex:none}
+  .price .amt .v{font-family:var(--mono);font-size:clamp(34px,6vw,46px);font-weight:800;color:var(--cream);line-height:1;letter-spacing:-1px}
+  .price .amt .k{font-size:12px;color:var(--muted);margin-top:8px;font-family:var(--mono);letter-spacing:.06em}
+
+  .terms{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border-top:1px solid var(--line)}
+  @media(max-width:560px){.terms{grid-template-columns:1fr}}
+  .terms > div{background:rgba(11,9,6,.55);padding:22px 30px}
+  .terms .n{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--coral);font-weight:700;margin-bottom:9px}
+  .terms .a{font-family:var(--mono);font-size:26px;font-weight:800;color:var(--gold-lit);line-height:1}
+  .terms .t{font-size:13.5px;color:var(--muted);margin-top:8px}
+
+  ul.feat{list-style:none;margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:11px 30px}
+  @media(max-width:640px){ul.feat{grid-template-columns:1fr}}
+  ul.feat li{position:relative;padding-inline-start:24px;font-size:14.5px;color:var(--cream)}
+  ul.feat li::before{
+    content:'✓';position:absolute;inset-inline-start:0;top:0;
+    color:var(--coral);font-weight:800;font-size:13px;
+  }
+
+  /* ══ cta + signature ══ */
+  .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;text-decoration:none;
+    font-size:14.5px;font-weight:700;padding:14px 26px;border-radius:4px;
+    transition:transform .18s,filter .18s;
+  }
+  .btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
+  .btn.primary{background:var(--coral);color:#fff}
+  .btn.ghost{border:1px solid var(--line-2);color:var(--cream);background:rgba(20,16,9,.6)}
+
+  .sig{margin-top:52px;padding-top:30px;border-top:1px solid var(--line)}
+  .sig .nm{font-size:17px;font-weight:800;color:var(--cream)}
+  .sig .ti{font-size:13.5px;color:var(--muted);margin-top:4px}
+  .sig .ln{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px 20px}
+  .sig .ln a{color:var(--coral);text-decoration:none;font-size:13.5px;font-weight:500}
+  .sig .ln a:hover{text-decoration:underline}
+
+  footer{
+    padding:26px var(--pad) 44px;text-align:center;
+    font-size:11.5px;color:var(--faint);border-top:1px solid var(--line);
+  }
+  footer span{margin-inline:8px}
+</style>
+</head>
+<body>
+
+<div class="bg">
+  <img src="assets/poster.jpg" alt="" id="bgposter">
+  <video src="assets/bg.mp4" autoplay muted loop playsinline poster="assets/poster.jpg" id="bgvideo"></video>
+</div>
+<div class="grain"></div>
+
+<div class="bar">
+  <a class="brand" href="https://todowith.ai/" target="_blank" rel="noopener">
+    <img src="https://avihai24n-oss.github.io/webinar/assets/todoai-icon.png" width="30" height="30" alt="TodoAI">
+    <span>TodoAI Studio</span>
+  </a>
+  <div class="lang" role="group" aria-label="Language">
+    <button type="button" data-lang="en" aria-pressed="true">EN</button>
+    <button type="button" data-lang="he" aria-pressed="false">עב</button>
+  </div>
+</div>
+
+<!-- ════ HERO ════ -->
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker"><span class="en">Film Proposal</span><span class="he">הצעה להפקת סרט</span></p>
+
+    <h1>
+      <span class="en">Doña Gracia Nasi<em>The most important Jewish woman you have never heard of.</em></span>
+      <span class="he">דוֹנָה גְרַסְיָה נָשִׂיא<em>האישה היהודייה החשובה ביותר שמעולם לא שמעתם עליה.</em></span>
+    </h1>
+
+    <p class="sub">
+      <span class="en">She financed kings, rescued thousands from the Inquisition, and dared to declare a boycott on the Pope. Four hundred years before Herzl, she leased an entire city in the Land of Israel. This is a documentary film that finally tells it.</span>
+      <span class="he">היא מימנה מלכים, הצילה אלפי אנוסים מהאינקוויזיציה, והעזה להכריז חרם על האפיפיור. 400 שנה לפני הרצל היא חכרה עיר שלמה בארץ ישראל. זהו סרט דוקומנטרי שסוף-סוף מספר את זה.</span>
+    </p>
+
+    <div class="facts">
+      <div class="fact">
+        <div class="v"><span class="en">&asymp; 5 min</span><span class="he">&asymp; 5 דק׳</span></div>
+        <div class="k"><span class="en">Estimated runtime</span><span class="he">אורך משוער</span></div>
+      </div>
+      <div class="fact">
+        <div class="v">
+          <svg class="ico" viewBox="0 0 34 22" aria-hidden="true"><rect x="1.2" y="1.2" width="31.6" height="19.6" rx="2.6"/></svg>16:9
+        </div>
+        <div class="k">
+          <span class="en">Widescreen &middot; 1920 &times; 1080</span>
+          <span class="he">מסך רוחב &middot; <span class="num-ltr">1920 &times; 1080</span></span>
+        </div>
+      </div>
+      <div class="fact">
+        <div class="v">EN</div>
+        <div class="k"><span class="en">Narration &amp; subtitles</span><span class="he">קריינות וכתוביות</span></div>
+      </div>
+    </div>
+
+    <div class="listen">
+      <div class="lbl">
+        <b><span class="en">Hear the actual narration</span><span class="he">האזינו לקריינות עצמה</span></b>
+        <i><span class="en">recorded &amp; final</span><span class="he">מוקלטת וסופית</span></i>
+      </div>
+      <div class="player" id="player">
+        <audio preload="metadata" src="assets/narration.mp3" id="au"></audio>
+        <button type="button" class="pp" id="pp" aria-label="Play narration">
+          <svg class="ic-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 1.5v13l11-6.5z"/></svg>
+          <svg class="ic-pause" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 1.5h4v13H3zM9 1.5h4v13H9z"/></svg>
+        </button>
+        <div class="track">
+          <div class="seek" id="bar"><div class="fill" id="fill"></div></div>
+          <div class="time"><span id="cur">0:00</span><span id="dur">&ndash;:&ndash;&ndash;</span></div>
+        </div>
+      </div>
+      <p class="cap">
+        <span class="en">This is not a sample. This is the finished narration that will carry our film, start to finish, and the voice it will be built on.</span>
+        <span class="he">זו לא דוגמה. זו הקריינות המוגמרת שתלווה את הסרט שלנו מתחילתו ועד סופו, והקול שעליו הוא ייבנה.</span>
+      </p>
+    </div>
+  </div>
+</header>
+
+<!-- ════ WHAT IT IS ════ -->
+<section id="film">
+  <div class="wrap">
+    <p class="eyebrow"><span class="en">The deliverable</span><span class="he">מה מקבלים</span></p>
+    <h2><span class="en">A finished film, ready to publish</span><span class="he">סרט מוגמר, מוכן לפרסום</span></h2>
+    <p class="lede">
+      <span class="en">Every frame is produced: the stills are generated, animated with real camera motion, cut to the narration, scored and subtitled. You receive one file.</span>
+      <span class="he">כל פריים מופק מקצה לקצה: התמונות נוצרות, מונפשות בתנועת מצלמה אמיתית, נחתכות לקריינות, מלוות במוזיקה ובכתוביות. אתם מקבלים קובץ אחד.</span>
+    </p>
+
+    <div class="inc">
+      <div>
+        <h3><span class="en">Narration</span><span class="he">קריינות</span></h3>
+        <p><span class="en">English documentary voice, already recorded. The file above is what ships.</span><span class="he">קול דוקומנטרי באנגלית, כבר מוקלט. הקובץ שלמעלה הוא מה שנכנס לסרט.</span></p>
+      </div>
+      <div>
+        <h3><span class="en">English subtitles</span><span class="he">כתוביות באנגלית</span></h3>
+        <p><span class="en">Burned in and synced word by word from the voice track itself, not estimated.</span><span class="he">צרובות ומסונכרנות מילה-במילה מתוך פס הקול עצמו, לא בהערכה.</span></p>
+      </div>
+      <div>
+        <h3><span class="en">Original score</span><span class="he">מוזיקה מקורית</span></h3>
+        <p><span class="en">Cinematic orchestral bed, mixed under the voice and shaped to the story arc.</span><span class="he">מצע אורקסטרלי קולנועי, ממוקסס מתחת לקריינות ובנוי לקשת הסיפור.</span></p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════ STORYBOARD ════ -->
+<section id="storyboard">
+  <div class="wrap">
+    <div class="sbhead">
+      <div>
+        <p class="eyebrow"><span class="en">Shot by shot</span><span class="he">שוט אחר שוט</span></p>
+        <h2><span class="en">The storyboard</span><span class="he">הסטוריבורד</span></h2>
+        <p class="lede" style="margin-top:12px">
+          <span class="en">Every shot, timed from the recorded narration. What the viewer sees, and what the viewer hears.</span>
+          <span class="he">כל שוט, מתוזמן מהקריינות שהוקלטה. מה שהצופה רואה, ומה שהוא שומע.</span>
+        </p>
+      </div>
+      <button type="button" class="sbtoggle" id="sbtoggle" aria-expanded="false"></button>
+    </div>
+    <div id="sb"></div>
+  </div>
+</section>
+
+<!-- ════ TRIBUTE ════ -->
+<section id="why">
+  <div class="wrap">
+    <p class="eyebrow"><span class="en">Why this one</span><span class="he">למה דווקא זה</span></p>
+    <h2><span class="en">I believe this is going to be big</span><span class="he">אני מאמין שזה הולך להיות משהו גדול</span></h2>
+    <div class="tribute">
+      <p>
+        <span class="en">Doña Gracia should be a household name. She ran one of the largest fortunes in Europe, built an underground rescue network centuries before the term existed, stood alone against a Pope, and bought a city in the Land of Israel three hundred and fifty years before the First Zionist Congress. Most people have never heard of her.</span>
+        <span class="he">דונה גרציה הייתה צריכה להיות שם שכל אחד מכיר. היא ניהלה אחד מההונות הגדולים באירופה, בנתה רשת הצלה מחתרתית מאות שנים לפני שהמונח נולד, עמדה לבדה מול אפיפיור, וקנתה עיר בארץ ישראל 350 שנה לפני הקונגרס הציוני הראשון. רוב האנשים מעולם לא שמעו עליה.</span>
+      </p>
+      <p>
+        <span class="en">I am not taking this on as another piece of content. I believe this film is going to travel, that it will move people, and that it will put Doña Gracia where she has always belonged. <b>That is why I want to make it properly.</b></span>
+        <span class="he">אני לא ניגש לזה כעוד תוכן. אני מאמין שהסרט הזה יתפשט, שהוא ירגש אנשים, ושהוא ישים את דונה גרציה במקום שתמיד הגיע לה. <b>בדיוק בגלל זה אני רוצה לעשות אותו כמו שצריך.</b></span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ════ PRICE ════ -->
+<section id="price">
+  <div class="wrap">
+    <p class="eyebrow"><span class="en">Investment</span><span class="he">השקעה</span></p>
+    <h2><span class="en">The whole film, one price</span><span class="he">כל הסרט, מחיר אחד</span></h2>
+
+    <div class="price">
+      <div class="top">
+        <div class="what">
+          <h3><span class="en">Doña Gracia Nasi &middot; documentary film</span><span class="he">דונה גרציה נשיא &middot; סרט דוקומנטרי</span></h3>
+          <p><span class="en">A finished film of roughly five minutes, animated throughout, with recorded narration, original score and English subtitles.</span><span class="he">סרט מוגמר של כ-5 דקות, מונפש לכל אורכו, עם קריינות מוקלטת, מוזיקה מקורית וכתוביות באנגלית.</span></p>
+        </div>
+        <div class="amt">
+          <div class="v">&#8362;5,000</div>
+          <div class="k"><span class="en">total, all inclusive</span><span class="he">סה"כ, כולל הכל</span></div>
+        </div>
+      </div>
+
+      <div class="terms">
+        <div>
+          <div class="n"><span class="en">On approval</span><span class="he">עם האישור</span></div>
+          <div class="a">&#8362;1,500</div>
+          <div class="t"><span class="en">30% deposit, paid before production begins.</span><span class="he">מקדמה של 30%, משולמת לפני תחילת ההפקה.</span></div>
+        </div>
+        <div>
+          <div class="n"><span class="en">On delivery</span><span class="he">עם המסירה</span></div>
+          <div class="a">&#8362;3,500</div>
+          <div class="t"><span class="en">The remaining 70%, paid on completion of the film.</span><span class="he">היתרה, 70%, משולמת עם סיום הסרט.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <ul class="feat">
+      <li><span class="en">Final film in widescreen 16:9, 1920 &times; 1080</span><span class="he">סרט סופי במסך רוחב 16:9, <span class="num-ltr">1920 &times; 1080</span></span></li>
+      <li><span class="en">English narration, already recorded</span><span class="he">קריינות באנגלית, כבר מוקלטת</span></li>
+      <li><span class="en">Burned-in English subtitles</span><span class="he">כתוביות באנגלית צרובות</span></li>
+      <li><span class="en">Original cinematic score</span><span class="he">מוזיקה קולנועית מקורית</span></li>
+      <li><span class="en">Every shot animated with camera motion</span><span class="he">כל שוט מונפש בתנועת מצלמה</span></li>
+      <li><span class="en">Closing card with your logo and dedication</span><span class="he">כרטיס סיום עם הלוגו וההקדשה שלכם</span></li>
+    </ul>
+
+    <div class="cta">
+      <a class="btn primary" href="https://wa.me/972542064301" target="_blank" rel="noopener">
+        <span class="en">Approve and start production</span><span class="he">לאישור ותחילת הפקה</span>
+      </a>
+      <a class="btn ghost" href="https://todowith.ai/" target="_blank" rel="noopener">
+        <span class="en">About TodoAI Studio</span><span class="he">על TodoAI Studio</span>
+      </a>
+    </div>
+
+    <div class="sig">
+      <div class="nm"><span class="en">Avihai Elnekave</span><span class="he">אביחי אלנקווה</span></div>
+      <div class="ti">Co-Founder &amp; AI Lead, TodoAI Studio</div>
+      <div class="ln">
+        <a href="https://wa.me/972542064301" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://todowith.ai/" target="_blank" rel="noopener">todowith.ai</a>
+        <a href="https://instagram.com/todoai.il" target="_blank" rel="noopener">@todoai.il</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>&copy; 2026 TodoAI Studio</span><span>&middot;</span>
+  <span class="en">This proposal is valid for 14 days</span><span class="he">ההצעה בתוקף ל-14 יום</span>
+</footer>
+
+<script src="assets/shots.js"></script>
+<script>
+(function(){
+  "use strict";
+
+  var STRINGS = {
+    en:{see:"What you see",hear:"What you hear",motion:"Camera",ost:"On screen",
+        expand:"Expand the full storyboard",collapse:"Collapse shots"},
+    he:{see:"מה רואים",hear:"מה שומעים",motion:"תנועת מצלמה",ost:"כיתוב על המסך",
+        expand:"הצג את הסטוריבורד המלא",collapse:"כווץ את השוטים"}
+  };
+
+  function esc(s){
+    return String(s == null ? "" : s)
+      .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  }
+  function pair(en,he){
+    return '<span class="en">'+esc(en)+'</span><span class="he">'+esc(he)+'</span>';
+  }
+  function label(key){ return pair(STRINGS.en[key], STRINGS.he[key]); }
+
+  /* ── render the storyboard from assets/shots.js ── */
+  var data = window.STORYBOARD || [];
+  var host = document.getElementById("sb");
+  var html = "";
+
+  data.forEach(function(seg, si){
+    html += '<div class="segment" data-seg="'+si+'">';
+    html +=   '<div class="seghead">';
+    html +=     '<span class="sn">'+esc(seg.n)+'</span>';
+    html +=     '<span class="st">'+pair(seg.en, seg.he)+'</span>';
+    html +=     '<span class="sr">'+esc(seg.range)+'</span>';
+    html +=   '</div>';
+
+    seg.shots.forEach(function(sh){
+      html += '<div class="shot">';
+      html +=   '<div class="idx"><div class="n">'+sh.no+'</div><div class="d">'+sh.dur+'s</div></div>';
+
+      html +=   '<div class="see">';
+      html +=     '<span class="tag">'+label("see")+'</span>';
+      html +=     '<div class="vis">'+pair(sh.visEn, sh.visHe)+'</div>';
+      if (sh.motion) {
+        html +=   '<div class="mo">'+esc(sh.motion)+'</div>';
+      }
+      if (sh.ost && sh.ost.length) {
+        html +=   '<div class="ost"><span class="tag" style="margin:0">'+label("ost")+'</span>';
+        sh.ost.forEach(function(o){
+          html += '<span'+(o.he ? ' class="rtl"' : '')+'>'+esc(o.text)+'</span>';
+        });
+        html +=   '</div>';
+      }
+      html +=   '</div>';
+
+      html +=   '<div class="hear">';
+      html +=     '<span class="tag">'+label("hear")+'</span>';
+      html +=     '<div class="nar">'+pair(sh.narEn, sh.narHe)+'</div>';
+      html +=   '</div>';
+      html += '</div>';
+    });
+
+    html += '</div>';
+  });
+  host.innerHTML = html;
+
+  /* ── collapse all but the cold open until asked ── */
+  var segments = Array.prototype.slice.call(host.querySelectorAll(".segment"));
+  var btn = document.getElementById("sbtoggle");
+  var open = false;
+
+  function applyCollapse(){
+    segments.forEach(function(el, i){
+      el.style.display = (open || i === 0) ? "" : "none";
+    });
+    btn.innerHTML = open ? label("collapse") : label("expand");
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+  btn.addEventListener("click", function(){
+    open = !open;
+    applyCollapse();
+  });
+  applyCollapse();
+
+  /* ── language ── */
+  var buttons = Array.prototype.slice.call(document.querySelectorAll(".lang button"));
+  function setLang(lang){
+    var root = document.documentElement;
+    root.setAttribute("lang", lang);
+    root.setAttribute("dir", lang === "he" ? "rtl" : "ltr");
+    buttons.forEach(function(b){
+      b.setAttribute("aria-pressed", b.dataset.lang === lang ? "true" : "false");
+    });
+    try { localStorage.setItem("dg-lang", lang); } catch (e) {}
+  }
+  buttons.forEach(function(b){
+    b.addEventListener("click", function(){ setLang(b.dataset.lang); });
+  });
+
+  var saved = null;
+  try { saved = localStorage.getItem("dg-lang"); } catch (e) {}
+  setLang(saved === "he" ? "he" : "en");
+
+  /* ── narration transport ── */
+  var au   = document.getElementById("au");
+  var pl   = document.getElementById("player");
+  var fill = document.getElementById("fill");
+  var bar  = document.getElementById("bar");
+  var cur  = document.getElementById("cur");
+  var dur  = document.getElementById("dur");
+
+  function clock(s){
+    if (!isFinite(s) || s < 0) s = 0;
+    var m = Math.floor(s / 60), r = Math.floor(s % 60);
+    return m + ":" + (r < 10 ? "0" : "") + r;
+  }
+  document.getElementById("pp").addEventListener("click", function(){
+    if (au.paused) { au.play(); } else { au.pause(); }
+  });
+  au.addEventListener("play",  function(){ pl.classList.add("playing"); });
+  au.addEventListener("pause", function(){ pl.classList.remove("playing"); });
+  au.addEventListener("ended", function(){ pl.classList.remove("playing"); });
+  au.addEventListener("loadedmetadata", function(){ dur.textContent = clock(au.duration); });
+  au.addEventListener("timeupdate", function(){
+    if (!au.duration) return;
+    fill.style.width = (au.currentTime / au.duration * 100) + "%";
+    cur.textContent = clock(au.currentTime);
+  });
+  bar.addEventListener("click", function(e){
+    if (!au.duration) return;
+    var r = bar.getBoundingClientRect();
+    var x = (e.clientX - r.left) / r.width;
+    /* the bar mirrors in RTL, so read the ratio from the writing direction */
+    if (document.documentElement.dir === "rtl") x = 1 - x;
+    au.currentTime = Math.min(Math.max(x, 0), 1) * au.duration;
+  });
+
+  /* ── swap the poster out once the loop is actually playing ── */
+  var vid = document.getElementById("bgvideo");
+  var poster = document.getElementById("bgposter");
+  function hidePoster(){ poster.style.display = "none"; }
+  if (vid.readyState >= 3) hidePoster();
+  vid.addEventListener("playing", hidePoster, { once:true });
+})();
+</script>
+</body>
+</html>
