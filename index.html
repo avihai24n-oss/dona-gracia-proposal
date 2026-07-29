@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Doña Gracia Nasi · Film Proposal | TodoAI Studio</title>
-<meta name="description" content="A documentary film on Doña Gracia Nasi, roughly five minutes. Storyboard, recorded narration and proposal.">
+<title>Doña Gracia Nasi · Trailer Proposal | TodoAI Studio</title>
+<meta name="description" content="A cinematic trailer on Doña Gracia Nasi, about three minutes. Storyboard, narration and proposal.">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://avihai24n-oss.github.io/dona-gracia-proposal/">
 <meta property="og:site_name" content="TodoAI Studio">
-<meta property="og:title" content="Doña Gracia Nasi · Film Proposal">
-<meta property="og:description" content="The most important Jewish woman you have never heard of. A documentary film of roughly five minutes, with the narration already recorded.">
+<meta property="og:title" content="Doña Gracia Nasi · Cinematic Trailer Proposal">
+<meta property="og:description" content="The most important Jewish woman you have never heard of. A cinematic trailer of about three minutes, carrying the peaks of her life.">
 <meta property="og:image" content="https://avihai24n-oss.github.io/dona-gracia-proposal/assets/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -19,8 +19,8 @@
 <meta property="og:locale:alternate" content="he_IL">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Doña Gracia Nasi · Film Proposal">
-<meta name="twitter:description" content="The most important Jewish woman you have never heard of. A documentary film of roughly five minutes.">
+<meta name="twitter:title" content="Doña Gracia Nasi · Cinematic Trailer Proposal">
+<meta name="twitter:description" content="The most important Jewish woman you have never heard of. A cinematic trailer of about three minutes.">
 <meta name="twitter:image" content="https://avihai24n-oss.github.io/dona-gracia-proposal/assets/og.jpg">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230B0906'/%3E%3Ctext x='16' y='23' font-size='19' font-family='Georgia,serif' fill='%23E8CB86' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E">
@@ -197,124 +197,10 @@
   }
   .fact .k{font-size:12.5px;color:var(--muted);margin-top:9px;letter-spacing:.02em}
 
-  /* ══ audio ══ */
-  .listen{
-    margin-top:38px;padding:24px 26px;
-    border:1px solid var(--line-2);border-radius:6px;
-    background:linear-gradient(180deg,rgba(201,162,75,.07),rgba(201,162,75,.02));
-    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
-  }
-  .listen .lbl{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:16px}
-  .listen .lbl b{font-size:15.5px;font-weight:700;color:var(--cream)}
-  .listen .lbl i{font-style:normal;font-family:var(--mono);font-size:11.5px;color:var(--gold);letter-spacing:.06em}
-  .listen .cap{font-size:13px;color:var(--muted);margin-top:14px}
-
-  /* custom transport, the native control is too bright for this page */
-  .player{display:flex;align-items:center;gap:16px}
-  .player .pp{
-    flex:none;width:46px;height:46px;border-radius:50%;
-    border:1px solid var(--gold);background:rgba(201,162,75,.14);
-    color:var(--gold-lit);cursor:pointer;display:grid;place-items:center;
-    transition:background .18s,transform .18s;
-  }
-  .player .pp:hover{background:rgba(201,162,75,.26);transform:scale(1.05)}
   /* the default focus ring is bright blue and fights the palette */
-  .player .pp:focus-visible,.lang button:focus-visible,.sbtoggle:focus-visible,
-  .btn:focus-visible,.brand:focus-visible,.player .seek:focus-visible{
+  .lang button:focus-visible,.btn:focus-visible,.brand:focus-visible{
     outline:2px solid var(--gold-lit);outline-offset:3px;
   }
-  .player .pp:focus:not(:focus-visible){outline:none}
-  .player .pp svg{width:15px;height:15px;fill:currentColor;display:block}
-  .player .pp .ic-pause{display:none}
-  .player.playing .pp .ic-play{display:none}
-  .player.playing .pp .ic-pause{display:block}
-
-  .player .track{flex:1;min-width:0}
-  .player .seek{
-    height:4px;border-radius:2px;background:rgba(242,235,221,.16);
-    position:relative;cursor:pointer;overflow:hidden;
-  }
-  .player .seek::after{ /* taller invisible hit area, the visible line stays 4px */
-    content:'';position:absolute;inset:-11px 0;
-  }
-  .player .seek .fill{
-    position:absolute;inset-block:0;inset-inline-start:0;width:0%;
-    background:linear-gradient(90deg,var(--gold),var(--gold-lit));border-radius:2px;
-  }
-  .player .time{
-    display:flex;justify-content:space-between;margin-top:9px;
-    font-family:var(--mono);font-size:11px;color:var(--muted);
-    direction:ltr;unicode-bidi:isolate;
-  }
-
-  /* ══ includes grid ══ */
-  .inc{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:38px}
-  @media(max-width:820px){.inc{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:460px){.inc{grid-template-columns:1fr}}
-  .inc > div{background:rgba(20,16,9,.72);padding:24px 22px;backdrop-filter:blur(6px)}
-  .inc h3{font-size:15px;font-weight:700;color:var(--gold-lit);margin-bottom:8px;display:flex;align-items:center;gap:8px}
-  .inc h3::before{content:'';width:5px;height:5px;background:var(--coral);border-radius:50%;flex:none}
-  .inc p{font-size:14px;color:var(--muted);line-height:1.6}
-
-  /* ══ storyboard ══ */
-  .sbhead{
-    display:flex;align-items:flex-end;justify-content:space-between;
-    gap:20px;flex-wrap:wrap;margin-bottom:26px;
-  }
-  .sbtoggle{
-    font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;font-weight:600;
-    color:var(--gold);background:transparent;border:1px solid var(--line-2);
-    border-radius:4px;padding:9px 16px;cursor:pointer;transition:.18s;white-space:nowrap;
-  }
-  .sbtoggle:hover{background:rgba(201,162,75,.1);color:var(--gold-lit)}
-
-  .segment{margin-top:2px;border-top:1px solid var(--line-2)}
-  .seghead{
-    display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;
-    padding:22px 2px 16px;
-  }
-  .seghead .sn{font-family:var(--mono);font-size:12px;color:var(--gold);font-weight:600}
-  .seghead .st{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--cream);letter-spacing:-.2px}
-  html[lang="he"] .seghead .st{font-family:var(--he);font-weight:800}
-  .seghead .sr{margin-inline-start:auto;font-family:var(--mono);font-size:11.5px;color:var(--faint)}
-
-  .shot{
-    display:grid;grid-template-columns:62px 1fr 1fr;gap:0;
-    border-top:1px solid var(--line);
-  }
-  @media(max-width:760px){.shot{grid-template-columns:48px 1fr}.shot .hear{grid-column:2}}
-  .shot > div{padding:18px 20px}
-  .shot .idx{
-    padding:18px 8px;text-align:center;
-    background:rgba(20,16,9,.5);border-inline-end:1px solid var(--line);
-  }
-  .shot .idx .n{font-family:var(--mono);font-size:19px;font-weight:700;color:var(--gold-lit);line-height:1}
-  .shot .idx .d{font-family:var(--mono);font-size:10px;color:var(--faint);margin-top:6px}
-  .shot .see{border-inline-end:1px solid var(--line)}
-  @media(max-width:760px){.shot .see{border-inline-end:0;border-bottom:1px solid var(--line)}}
-
-  .tag{
-    font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
-    color:rgba(217,198,164,.60);display:block;margin-bottom:9px;
-  }
-  .shot .vis{font-size:14.5px;color:var(--cream);line-height:1.55}
-  .shot .mo{
-    margin-top:11px;padding-top:10px;border-top:1px dashed var(--line);
-    font-size:11.5px;color:var(--olive);font-family:var(--mono);line-height:1.5;
-    direction:ltr;unicode-bidi:isolate;
-  }
-  .shot .ost{margin-top:11px}
-  /* :not(.tag) so the label above the box does not get boxed itself */
-  .shot .ost > span:not(.tag){
-    display:block;font-size:12px;color:var(--sand);
-    background:rgba(201,162,75,.09);border-inline-start:2px solid var(--gold);
-    padding:6px 10px;margin-top:5px;line-height:1.4;
-  }
-  /* .rtl, not .he: on-screen text is literal film content and must show in both UI languages */
-  .shot .ost > span:not(.tag){direction:ltr;unicode-bidi:isolate}
-  .shot .ost > span.rtl{direction:rtl}
-  .shot .nar{font-size:15.5px;color:var(--cream);font-weight:400;line-height:1.6}
-  html[lang="en"] .shot .nar{font-family:var(--serif);font-weight:400}
 
   /* ══ tribute ══ */
   .tribute{
@@ -409,7 +295,7 @@
 <!-- ════ HERO ════ -->
 <header class="hero">
   <div class="wrap">
-    <p class="kicker"><span class="en">Film Proposal</span><span class="he">הצעה להפקת סרט</span></p>
+    <p class="kicker"><span class="en">Cinematic Trailer Proposal</span><span class="he">הצעה להפקת טריילר קולנועי</span></p>
 
     <h1>
       <span class="en">Doña Gracia Nasi<em>The most important Jewish woman you have never heard of.</em></span>
@@ -417,13 +303,13 @@
     </h1>
 
     <p class="sub">
-      <span class="en">She financed kings, rescued thousands from the Inquisition, and dared to declare a boycott on the Pope. Four hundred years before Herzl, she leased an entire city in the Land of Israel. This is a documentary film that finally tells it.</span>
-      <span class="he">היא מימנה מלכים, הצילה אלפי אנוסים מהאינקוויזיציה, והעזה להכריז חרם על האפיפיור. 400 שנה לפני הרצל היא חכרה עיר שלמה בארץ ישראל. זהו סרט דוקומנטרי שסוף-סוף מספר את זה.</span>
+      <span class="en">She financed kings, rescued thousands from the Inquisition, and dared to declare a boycott on the Pope. Four hundred years before Herzl, she bought an entire city in the Land of Israel. A cinematic trailer carrying the peaks of that life, end to end.</span>
+      <span class="he">היא מימנה מלכים, הצילה אלפי אנוסים מהאינקוויזיציה, והעזה להכריז חרם על האפיפיור. 400 שנה לפני הרצל היא קנתה עיר שלמה בארץ ישראל. טריילר קולנועי שנושא את שיאי החיים האלה, מקצה לקצה.</span>
     </p>
 
     <div class="facts">
       <div class="fact">
-        <div class="v"><span class="en">&asymp; 5 min</span><span class="he">&asymp; 5 דק׳</span></div>
+        <div class="v"><span class="en">&asymp; 3 min</span><span class="he">&asymp; 3 דק׳</span></div>
         <div class="k"><span class="en">Estimated runtime</span><span class="he">אורך משוער</span></div>
       </div>
       <div class="fact">
@@ -441,73 +327,26 @@
       </div>
     </div>
 
-    <div class="listen">
-      <div class="lbl">
-        <b><span class="en">Hear the actual narration</span><span class="he">האזינו לקריינות עצמה</span></b>
-        <i><span class="en">recorded &amp; final</span><span class="he">מוקלטת וסופית</span></i>
-      </div>
-      <div class="player" id="player">
-        <audio preload="metadata" src="assets/narration.mp3" id="au"></audio>
-        <button type="button" class="pp" id="pp" aria-label="Play narration">
-          <svg class="ic-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 1.5v13l11-6.5z"/></svg>
-          <svg class="ic-pause" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 1.5h4v13H3zM9 1.5h4v13H9z"/></svg>
-        </button>
-        <div class="track">
-          <div class="seek" id="bar"><div class="fill" id="fill"></div></div>
-          <div class="time"><span id="cur">0:00</span><span id="dur">&ndash;:&ndash;&ndash;</span></div>
-        </div>
-      </div>
-      <p class="cap">
-        <span class="en">This is not a sample. This is the finished narration that will carry our film, start to finish, and the voice it will be built on.</span>
-        <span class="he">זו לא דוגמה. זו הקריינות המוגמרת שתלווה את הסרט שלנו מתחילתו ועד סופו, והקול שעליו הוא ייבנה.</span>
-      </p>
-    </div>
   </div>
 </header>
 
-<!-- ════ WHAT IT IS ════ -->
-<section id="film">
+<!-- ════ MAP ════ -->
+<section id="map">
   <div class="wrap">
-    <p class="eyebrow"><span class="en">The deliverable</span><span class="he">מה מקבלים</span></p>
-    <h2><span class="en">A finished film, ready to publish</span><span class="he">סרט מוגמר, מוכן לפרסום</span></h2>
+    <p class="eyebrow"><span class="en">Her world</span><span class="he">העולם שלה</span></p>
+    <h2><span class="en">Where the story goes</span><span class="he">לאן הסיפור נוסע</span></h2>
     <p class="lede">
-      <span class="en">Every frame is produced: the stills are generated, animated with real camera motion, cut to the narration, scored and subtitled. You receive one file.</span>
-      <span class="he">כל פריים מופק מקצה לקצה: התמונות נוצרות, מונפשות בתנועת מצלמה אמיתית, נחתכות לקריינות, מלוות במוזיקה ובכתוביות. אתם מקבלים קובץ אחד.</span>
+      <span class="en">Lisbon, Antwerp, Venice, Ferrara, Constantinople, Ancona, Tiberias — one lifetime, seven cities, and a rescue network running between them.</span>
+      <span class="he">ליסבון, אנטוורפן, ונציה, פרארה, קושטא, אנקונה, טבריה — חיים אחדים, שבע ערים, ורשת הצלה שנעה ביניהן.</span>
     </p>
 
-    <div class="inc">
-      <div>
-        <h3><span class="en">Narration</span><span class="he">קריינות</span></h3>
-        <p><span class="en">English documentary voice, already recorded. The file above is what ships.</span><span class="he">קול דוקומנטרי באנגלית, כבר מוקלט. הקובץ שלמעלה הוא מה שנכנס לסרט.</span></p>
-      </div>
-      <div>
-        <h3><span class="en">English subtitles</span><span class="he">כתוביות באנגלית</span></h3>
-        <p><span class="en">Burned in and synced word by word from the voice track itself, not estimated.</span><span class="he">צרובות ומסונכרנות מילה-במילה מתוך פס הקול עצמו, לא בהערכה.</span></p>
-      </div>
-      <div>
-        <h3><span class="en">Original score</span><span class="he">מוזיקה מקורית</span></h3>
-        <p><span class="en">Cinematic orchestral bed, mixed under the voice and shaped to the story arc.</span><span class="he">מצע אורקסטרלי קולנועי, ממוקסס מתחת לקריינות ובנוי לקשת הסיפור.</span></p>
-      </div>
-    </div>
+    <!-- ▼▼▼ INTERACTIVE MAP MOUNTS HERE ▼▼▼
+         Drop the generated map markup/script inside #map-mount.
+         If it needs its own JS, add the <script> just above the existing
+         page script at the bottom of this file so it does not block it. -->
+    <div id="map-mount"></div>
+    <!-- ▲▲▲ END MAP ▲▲▲ -->
 
-  </div>
-</section>
-
-<!-- ════ STORYBOARD ════ -->
-<section id="storyboard">
-  <div class="wrap">
-    <div class="sbhead">
-      <div>
-        <p class="eyebrow"><span class="en">Shot by shot</span><span class="he">שוט אחר שוט</span></p>
-        <h2><span class="en">The storyboard</span><span class="he">הסטוריבורד</span></h2>
-        <p class="lede" style="margin-top:12px">
-          <span class="en">Every shot, timed from the recorded narration. What the viewer sees, and what the viewer hears.</span>
-          <span class="he">כל שוט, מתוזמן מהקריינות שהוקלטה. מה שהצופה רואה, ומה שהוא שומע.</span>
-        </p>
-      </div>
-      <button type="button" class="sbtoggle" id="sbtoggle" aria-expanded="false"></button>
-    </div>
-    <div id="sb"></div>
   </div>
 </section>
 
@@ -522,8 +361,8 @@
         <span class="he">דונה גרציה הייתה צריכה להיות שם שכל אחד מכיר. היא ניהלה אחד מההונות הגדולים באירופה, בנתה רשת הצלה מחתרתית מאות שנים לפני שהמונח נולד, עמדה לבדה מול אפיפיור, וקנתה עיר בארץ ישראל 350 שנה לפני הקונגרס הציוני הראשון. רוב האנשים מעולם לא שמעו עליה.</span>
       </p>
       <p>
-        <span class="en">I am not taking this on as another piece of content. I believe this film is going to travel, that it will move people, and that it will put Doña Gracia where she has always belonged. <b>That is why I want to make it properly.</b></span>
-        <span class="he">אני לא ניגש לזה כעוד תוכן. אני מאמין שהסרט הזה יתפשט, שהוא ירגש אנשים, ושהוא ישים את דונה גרציה במקום שתמיד הגיע לה. <b>בדיוק בגלל זה אני רוצה לעשות אותו כמו שצריך.</b></span>
+        <span class="en">I am not taking this on as another piece of content. I believe this is going to travel, that it will move people, and that it will put Doña Gracia where she has always belonged. <b>That is why I want to make it properly.</b></span>
+        <span class="he">אני לא ניגש לזה כעוד תוכן. אני מאמין שזה יתפשט, שזה ירגש אנשים, ושזה ישים את דונה גרציה במקום שתמיד הגיע לה. <b>בדיוק בגלל זה אני רוצה לעשות את זה כמו שצריך.</b></span>
       </p>
     </div>
   </div>
@@ -533,13 +372,13 @@
 <section id="price">
   <div class="wrap">
     <p class="eyebrow"><span class="en">Investment</span><span class="he">השקעה</span></p>
-    <h2><span class="en">The whole film, one price</span><span class="he">כל הסרט, מחיר אחד</span></h2>
+    <h2><span class="en">The whole trailer, one price</span><span class="he">כל הטריילר, מחיר אחד</span></h2>
 
     <div class="price">
       <div class="top">
         <div class="what">
-          <h3><span class="en">Doña Gracia Nasi &middot; documentary film</span><span class="he">דונה גרציה נשיא &middot; סרט דוקומנטרי</span></h3>
-          <p><span class="en">A finished film of roughly five minutes, animated throughout, with recorded narration, original score and English subtitles.</span><span class="he">סרט מוגמר של כ-5 דקות, מונפש לכל אורכו, עם קריינות מוקלטת, מוזיקה מקורית וכתוביות באנגלית.</span></p>
+          <h3><span class="en">Doña Gracia Nasi &middot; cinematic trailer</span><span class="he">דונה גרציה נשיא &middot; טריילר קולנועי</span></h3>
+          <p><span class="en">A finished cinematic trailer of about three minutes, animated throughout, with recorded narration, original score and English subtitles.</span><span class="he">טריילר קולנועי מוגמר של כ-3 דקות, מונפש לכל אורכו, עם קריינות מוקלטת, מוזיקה מקורית וכתוביות באנגלית.</span></p>
         </div>
         <div class="amt">
           <div class="v">&#8362;5,000</div>
@@ -556,17 +395,17 @@
         <div>
           <div class="n"><span class="en">On delivery</span><span class="he">עם המסירה</span></div>
           <div class="a">&#8362;3,500</div>
-          <div class="t"><span class="en">The remaining 70%, paid on completion of the film.</span><span class="he">היתרה, 70%, משולמת עם סיום הסרט.</span></div>
+          <div class="t"><span class="en">The remaining 70%, paid on completion of the trailer.</span><span class="he">היתרה, 70%, משולמת עם סיום הטריילר.</span></div>
         </div>
       </div>
     </div>
 
     <ul class="feat">
-      <li><span class="en">Final film in widescreen 16:9, 1920 &times; 1080</span><span class="he">סרט סופי במסך רוחב 16:9, <span class="num-ltr">1920 &times; 1080</span></span></li>
-      <li><span class="en">English narration, already recorded</span><span class="he">קריינות באנגלית, כבר מוקלטת</span></li>
+      <li><span class="en">Final trailer in widescreen 16:9, 1920 &times; 1080</span><span class="he">טריילר סופי במסך רוחב 16:9, <span class="num-ltr">1920 &times; 1080</span></span></li>
+      <li><span class="en">English narration, script locked</span><span class="he">קריינות באנגלית, תסריט נעול</span></li>
       <li><span class="en">Burned-in English subtitles</span><span class="he">כתוביות באנגלית צרובות</span></li>
       <li><span class="en">Original cinematic score</span><span class="he">מוזיקה קולנועית מקורית</span></li>
-      <li><span class="en">Every shot animated with camera motion</span><span class="he">כל שוט מונפש בתנועת מצלמה</span></li>
+      <li><span class="en">Every shot animated with real camera motion</span><span class="he">כל שוט מונפש בתנועת מצלמה אמיתית</span></li>
       <li><span class="en">Closing card with your logo and dedication</span><span class="he">כרטיס סיום עם הלוגו וההקדשה שלכם</span></li>
     </ul>
 
@@ -596,87 +435,9 @@
   <span class="en">This proposal is valid for 14 days</span><span class="he">ההצעה בתוקף ל-14 יום</span>
 </footer>
 
-<script src="assets/shots.js"></script>
 <script>
 (function(){
   "use strict";
-
-  var STRINGS = {
-    en:{see:"What you see",hear:"What you hear",motion:"Camera",ost:"On screen",
-        expand:"Expand the full storyboard",collapse:"Collapse shots"},
-    he:{see:"מה רואים",hear:"מה שומעים",motion:"תנועת מצלמה",ost:"כיתוב על המסך",
-        expand:"הצג את הסטוריבורד המלא",collapse:"כווץ את השוטים"}
-  };
-
-  function esc(s){
-    return String(s == null ? "" : s)
-      .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
-  }
-  function pair(en,he){
-    return '<span class="en">'+esc(en)+'</span><span class="he">'+esc(he)+'</span>';
-  }
-  function label(key){ return pair(STRINGS.en[key], STRINGS.he[key]); }
-
-  /* ── render the storyboard from assets/shots.js ── */
-  var data = window.STORYBOARD || [];
-  var host = document.getElementById("sb");
-  var html = "";
-
-  data.forEach(function(seg, si){
-    html += '<div class="segment" data-seg="'+si+'">';
-    html +=   '<div class="seghead">';
-    html +=     '<span class="sn">'+esc(seg.n)+'</span>';
-    html +=     '<span class="st">'+pair(seg.en, seg.he)+'</span>';
-    html +=     '<span class="sr">'+esc(seg.range)+'</span>';
-    html +=   '</div>';
-
-    seg.shots.forEach(function(sh){
-      html += '<div class="shot">';
-      html +=   '<div class="idx"><div class="n">'+sh.no+'</div><div class="d">'+sh.dur+'s</div></div>';
-
-      html +=   '<div class="see">';
-      html +=     '<span class="tag">'+label("see")+'</span>';
-      html +=     '<div class="vis">'+pair(sh.visEn, sh.visHe)+'</div>';
-      if (sh.motion) {
-        html +=   '<div class="mo">'+esc(sh.motion)+'</div>';
-      }
-      if (sh.ost && sh.ost.length) {
-        html +=   '<div class="ost"><span class="tag" style="margin:0">'+label("ost")+'</span>';
-        sh.ost.forEach(function(o){
-          html += '<span'+(o.he ? ' class="rtl"' : '')+'>'+esc(o.text)+'</span>';
-        });
-        html +=   '</div>';
-      }
-      html +=   '</div>';
-
-      html +=   '<div class="hear">';
-      html +=     '<span class="tag">'+label("hear")+'</span>';
-      html +=     '<div class="nar">'+pair(sh.narEn, sh.narHe)+'</div>';
-      html +=   '</div>';
-      html += '</div>';
-    });
-
-    html += '</div>';
-  });
-  host.innerHTML = html;
-
-  /* ── collapse all but the cold open until asked ── */
-  var segments = Array.prototype.slice.call(host.querySelectorAll(".segment"));
-  var btn = document.getElementById("sbtoggle");
-  var open = false;
-
-  function applyCollapse(){
-    segments.forEach(function(el, i){
-      el.style.display = (open || i === 0) ? "" : "none";
-    });
-    btn.innerHTML = open ? label("collapse") : label("expand");
-    btn.setAttribute("aria-expanded", open ? "true" : "false");
-  }
-  btn.addEventListener("click", function(){
-    open = !open;
-    applyCollapse();
-  });
-  applyCollapse();
 
   /* ── language ── */
   var buttons = Array.prototype.slice.call(document.querySelectorAll(".lang button"));
@@ -696,40 +457,6 @@
   var saved = null;
   try { saved = localStorage.getItem("dg-lang"); } catch (e) {}
   setLang(saved === "he" ? "he" : "en");
-
-  /* ── narration transport ── */
-  var au   = document.getElementById("au");
-  var pl   = document.getElementById("player");
-  var fill = document.getElementById("fill");
-  var bar  = document.getElementById("bar");
-  var cur  = document.getElementById("cur");
-  var dur  = document.getElementById("dur");
-
-  function clock(s){
-    if (!isFinite(s) || s < 0) s = 0;
-    var m = Math.floor(s / 60), r = Math.floor(s % 60);
-    return m + ":" + (r < 10 ? "0" : "") + r;
-  }
-  document.getElementById("pp").addEventListener("click", function(){
-    if (au.paused) { au.play(); } else { au.pause(); }
-  });
-  au.addEventListener("play",  function(){ pl.classList.add("playing"); });
-  au.addEventListener("pause", function(){ pl.classList.remove("playing"); });
-  au.addEventListener("ended", function(){ pl.classList.remove("playing"); });
-  au.addEventListener("loadedmetadata", function(){ dur.textContent = clock(au.duration); });
-  au.addEventListener("timeupdate", function(){
-    if (!au.duration) return;
-    fill.style.width = (au.currentTime / au.duration * 100) + "%";
-    cur.textContent = clock(au.currentTime);
-  });
-  bar.addEventListener("click", function(e){
-    if (!au.duration) return;
-    var r = bar.getBoundingClientRect();
-    var x = (e.clientX - r.left) / r.width;
-    /* the bar mirrors in RTL, so read the ratio from the writing direction */
-    if (document.documentElement.dir === "rtl") x = 1 - x;
-    au.currentTime = Math.min(Math.max(x, 0), 1) * au.duration;
-  });
 
   /* ── swap the poster out once the loop is actually playing ── */
   var vid = document.getElementById("bgvideo");
