@@ -252,6 +252,20 @@
   .terms .a{font-family:var(--mono);font-size:26px;font-weight:800;color:var(--gold-lit);line-height:1}
   .terms .t{font-size:13.5px;color:var(--muted);margin-top:8px}
 
+  /* ההסכם יושב בתוך כרטיס המחיר, מיד מתחת לתנאי התשלום — מי שקרא את
+     הסכומים הוא בדיוק מי שרוצה לראות את ההסכם המלא, בלי לחפש. */
+  .agreement{
+    border-top:1px solid var(--line);background:rgba(11,9,6,.55);
+    padding:16px 30px;font-size:13.5px;color:var(--muted);
+  }
+  .agreement a{
+    color:var(--gold-lit);font-weight:600;text-decoration:none;
+    border-bottom:1px solid var(--line-2);padding-bottom:1px;
+    transition:color .18s,border-color .18s;
+  }
+  .agreement a:hover{color:var(--cream);border-color:var(--gold-lit)}
+  .agreement .sz{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.06em}
+
   ul.feat{list-style:none;margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:11px 30px}
   @media(max-width:640px){ul.feat{grid-template-columns:1fr}}
   ul.feat li{position:relative;padding-inline-start:24px;font-size:14.5px;color:var(--cream)}
@@ -417,6 +431,15 @@
           <div class="t"><span class="en">The remaining 70%, paid on completion of the trailer.</span><span class="he">היתרה, 70%, משולמת עם סיום הטריילר.</span></div>
         </div>
       </div>
+
+      <p class="agreement">
+        <a href="assets/dona-gracia-agreement.pdf" download>
+          <span class="en">Read the production agreement</span><span class="he">קראו את הסכם ההפקה</span>
+        </a>
+        <span class="en"> &mdash; the full terms, exactly as they will be signed. </span>
+        <span class="he"> &mdash; התנאים המלאים, בדיוק כפי שייחתמו. </span>
+        <span class="sz">PDF &middot; <span class="num-ltr">379&nbsp;KB</span></span>
+      </p>
     </div>
 
     <ul class="feat">
