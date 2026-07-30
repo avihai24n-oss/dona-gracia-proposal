@@ -149,6 +149,18 @@
   .lede{font-size:clamp(16px,2vw,18.5px);color:var(--sand);max-width:62ch;font-weight:300}
   .rule{height:1px;background:var(--line);border:0}
 
+  /* ══ interactive map ══
+     iframe ולא הטמעה ישירה: המפה מביאה איתה CSS גלובלי משלה (.city-label,
+     header.hud) ומחליפה dir/lang על שורש המסמך. iframe מבודד את זה לגמרי.
+     loading=lazy כי הקובץ הוא 5MB — הוא לא נטען עד שגוללים לכאן. */
+  #map-mount{margin-top:clamp(24px,4vw,40px)}
+  #map-mount iframe{
+    display:block;width:100%;aspect-ratio:16/10;min-height:420px;
+    border:1px solid var(--line-2);background:var(--stone);
+  }
+  .map-note{margin-top:12px;font-size:13px;color:var(--muted)}
+  @media (max-width:600px){ #map-mount iframe{aspect-ratio:3/4} }
+
   /* ══ hero ══ */
   .hero{
     min-height:100svh;display:flex;flex-direction:column;justify-content:center;
@@ -340,11 +352,16 @@
       <span class="he">ליסבון, אנטוורפן, ונציה, פרארה, קושטא, אנקונה, טבריה — חיים אחדים, שבע ערים, ורשת הצלה שנעה ביניהן.</span>
     </p>
 
-    <!-- ▼▼▼ INTERACTIVE MAP MOUNTS HERE ▼▼▼
-         Drop the generated map markup/script inside #map-mount.
-         If it needs its own JS, add the <script> just above the existing
-         page script at the bottom of this file so it does not block it. -->
-    <div id="map-mount"></div>
+    <!-- ▼▼▼ INTERACTIVE MAP ▼▼▼  נבנה מ-map-app/ ע"י `node build.mjs`,
+         ומועתק לכאן כ-assets/map.html. להחלפה — לבנות מחדש ולהעתיק. -->
+    <div id="map-mount">
+      <iframe src="assets/map.html" loading="lazy"
+              title="Doña Gracia — interactive journey map"></iframe>
+      <p class="map-note">
+        <span class="en">Click “Begin the journey”, then press ▶ for the guided tour.</span>
+        <span class="he">לחצו “התחל את המסע”, ואז ▶ לסיור המודרך.</span>
+      </p>
+    </div>
     <!-- ▲▲▲ END MAP ▲▲▲ -->
 
   </div>
