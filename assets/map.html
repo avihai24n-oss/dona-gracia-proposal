@@ -604,8 +604,10 @@
 
 <div class="tip" id="tip"></div>
 
-<!-- מוזיקת רקע. הקובץ מוטמע ב-dist בזמן הבנייה; ראה build.mjs -->
-<audio id="bgm" loop preload="auto" src="map-theme.mp3"></audio>
+<!-- מוזיקת רקע. הקובץ מוטמע ב-dist בזמן הבנייה; ראה build.mjs.
+     preload="none" — נמשך רק כשמתחילים את המסע. עם "auto" הדפדפן הוריד 3.5MB
+     בכל טעינה בטלפון, וזה ביטל את כל הרווח מהוצאת המוזיקה לקובץ נפרד. -->
+<audio id="bgm" loop preload="none" src="map-theme.mp3"></audio>
 
 <section class="intro" id="intro">
   <div class="intro-in">
@@ -2271,13 +2273,16 @@ function boot(D) {
   // בדיוק בלחיצה על כפתור מסך הפתיחה. זה בדיוק מה שמסך הפתיחה קונה לנו.
   const bgm = document.getElementById('bgm');
   const muteBtn = $('mute');
-  let hasAudio = false;
 
-  bgm.addEventListener('canplay', () => { hasAudio = true; muteBtn.hidden = false; });
-  bgm.addEventListener('error', () => { hasAudio = false; muteBtn.hidden = true; });
+  // התגית היא preload="none" בכוונה: אחרת הדפדפן מושך 3.5MB בכל טעינה, גם אצל מי
+  // שלא לחץ "התחל את המסע" — בטלפון זה ביטל את כל הרווח מהוצאת המוזיקה מה-HTML.
+  // ומכאן נובע שאסור לתלות את ההשמעה ב-canplay: הוא לא ייורה לפני שביקשנו לנגן,
+  // ותנאי כניסה שממתין לו היה משתיק את המוזיקה תמיד. קוראים ל-play() ונותנים
+  // להבטחה להיכשל בשקט אם אין קובץ.
+  bgm.addEventListener('canplay', () => { muteBtn.hidden = false; });
+  bgm.addEventListener('error',   () => { muteBtn.hidden = true;  });
 
   function playMusic() {
-    if (!hasAudio) return;
     bgm.volume = 0;
     bgm.play().then(() => {
       const t0 = performance.now();
