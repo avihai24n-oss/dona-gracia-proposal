@@ -152,7 +152,9 @@
   /* ══ interactive map ══
      iframe ולא הטמעה ישירה: המפה מביאה איתה CSS גלובלי משלה (.city-label,
      header.hud) ומחליפה dir/lang על שורש המסמך. iframe מבודד את זה לגמרי.
-     loading=lazy כי הקובץ הוא 5MB — הוא לא נטען עד שגוללים לכאן. */
+     loading=lazy כי אין טעם לשלם על המפה למי שלא גלל עד לכאן.
+     ה-HTML הוא ~390KB: המוזיקה יושבת בקובץ נפרד (map-theme.mp3) ונמשכת רק
+     כשמתחילים את המסע. קודם היא הייתה מוטמעת ב-base64 והקובץ היה 5MB. */
   #map-mount{margin-top:clamp(24px,4vw,40px)}
   #map-mount iframe{
     display:block;width:100%;aspect-ratio:16/10;min-height:420px;
