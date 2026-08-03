@@ -210,7 +210,7 @@
   .fact .k{font-size:12.5px;color:var(--muted);margin-top:9px;letter-spacing:.02em}
 
   /* the default focus ring is bright blue and fights the palette */
-  .lang button:focus-visible,.btn:focus-visible,.brand:focus-visible{
+  .lang button:focus-visible,.brand:focus-visible{
     outline:2px solid var(--gold-lit);outline-offset:3px;
   }
 
@@ -228,27 +228,8 @@
   .tribute p + p{margin-top:18px}
   .tribute b{color:var(--gold-lit);font-weight:600}
 
-  /* ══ what the film includes ══ */
-  ul.feat{list-style:none;margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:11px 30px}
-  @media(max-width:640px){ul.feat{grid-template-columns:1fr}}
-  ul.feat li{position:relative;padding-inline-start:24px;font-size:14.5px;color:var(--cream)}
-  ul.feat li::before{
-    content:'✓';position:absolute;inset-inline-start:0;top:0;
-    color:var(--coral);font-weight:800;font-size:13px;
-  }
-
-  /* ══ cta + signature ══ */
-  .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
-  .btn{
-    display:inline-flex;align-items:center;gap:9px;text-decoration:none;
-    font-size:14.5px;font-weight:700;padding:14px 26px;border-radius:4px;
-    transition:transform .18s,filter .18s;
-  }
-  .btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
-  .btn.primary{background:var(--coral);color:#fff}
-  .btn.ghost{border:1px solid var(--line-2);color:var(--cream);background:rgba(20,16,9,.6)}
-
-  .sig{margin-top:52px;padding-top:30px;border-top:1px solid var(--line)}
+  /* ══ signature ══ */
+  .sig{padding-top:30px;border-top:1px solid var(--line)}
   .sig .nm{font-size:17px;font-weight:800;color:var(--cream)}
   .sig .ti{font-size:13.5px;color:var(--muted);margin-top:4px}
   .sig .ln{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px 20px}
@@ -363,34 +344,9 @@
   </div>
 </section>
 
-<!-- ════ WHAT THE FILM IS ════ -->
-<section id="film">
+<!-- ════ SIGNATURE ════ -->
+<section id="contact">
   <div class="wrap">
-    <p class="eyebrow"><span class="en">The film</span><span class="he">הסרט</span></p>
-    <h2><span class="en">What it is</span><span class="he">מה זה</span></h2>
-    <p class="lede">
-      <span class="en">A finished cinematic trailer of about four to five minutes, animated throughout, with recorded narration, original score and English subtitles. It is also cut into short clips for social media.</span>
-      <span class="he">טריילר קולנועי מוגמר של כ-4&ndash;5 דקות, מונפש לכל אורכו, עם קריינות מוקלטת, מוזיקה מקורית וכתוביות באנגלית. בנוסף הוא נחתך לקליפים קצרים לרשתות.</span>
-    </p>
-
-    <ul class="feat">
-      <li><span class="en">Final trailer in widescreen 16:9, 1920 &times; 1080</span><span class="he">טריילר סופי במסך רוחב 16:9, <span class="num-ltr">1920 &times; 1080</span></span></li>
-      <li><span class="en">English narration, script locked</span><span class="he">קריינות באנגלית, תסריט נעול</span></li>
-      <li><span class="en">Burned-in English subtitles</span><span class="he">כתוביות באנגלית צרובות</span></li>
-      <li><span class="en">Original cinematic score</span><span class="he">מוזיקה קולנועית מקורית</span></li>
-      <li><span class="en">Every shot animated with real camera motion</span><span class="he">כל שוט מונפש בתנועת מצלמה אמיתית</span></li>
-      <li><span class="en">Closing card with your logo and dedication</span><span class="he">כרטיס סיום עם הלוגו וההקדשה שלכם</span></li>
-    </ul>
-
-    <div class="cta">
-      <a class="btn primary" href="https://wa.me/972542064301" target="_blank" rel="noopener">
-        <span class="en">Talk to us</span><span class="he">דברו איתנו</span>
-      </a>
-      <a class="btn ghost" href="https://todowith.ai/" target="_blank" rel="noopener">
-        <span class="en">About TodoAI Studio</span><span class="he">על TodoAI Studio</span>
-      </a>
-    </div>
-
     <div class="sig">
       <div class="nm"><span class="en">Avihai Elnekave</span><span class="he">אביחי אלנקווה</span></div>
       <div class="ti">Co-Founder &amp; AI Lead, TodoAI Studio</div>
