@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doña Gracia Nasi · The Film | TodoAI Studio</title>
+<meta name="description" content="A cinematic trailer on Doña Gracia Nasi, about four to five minutes. The story, the journey map and what the film includes.">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://avihai24n-oss.github.io/dona-gracia-proposal/overview.html">
+<meta property="og:site_name" content="TodoAI Studio">
+<meta property="og:title" content="Doña Gracia Nasi · Cinematic Trailer">
+<meta property="og:description" content="The most important Jewish woman you have never heard of. A cinematic trailer of about four to five minutes, carrying the peaks of her life.">
+<meta property="og:image" content="https://avihai24n-oss.github.io/dona-gracia-proposal/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Doña Gracia overlooking a walled city in the Land of Israel.">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="he_IL">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Doña Gracia Nasi · Cinematic Trailer">
+<meta name="twitter:description" content="The most important Jewish woman you have never heard of. A cinematic trailer of about four to five minutes.">
+<meta name="twitter:image" content="https://avihai24n-oss.github.io/dona-gracia-proposal/assets/og.jpg">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230B0906'/%3E%3Ctext x='16' y='23' font-size='19' font-family='Georgia,serif' fill='%23E8CB86' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* palette lifted from the film's own frame: golden hour, limestone, olive, velvet */
+    --void:#0B0906;
+    --deep:#141009;
+    --stone:#1E1811;
+    --line:rgba(214,186,140,.16);
+    --line-2:rgba(214,186,140,.30);
+
+    --cream:#F2EBDD;
+    --sand:#D9C6A4;
+    --muted:#A2937B;
+    --faint:#6E6353;
+
+    --gold:#C9A24B;
+    --gold-lit:#E8CB86;
+    --olive:#7E8B62;
+    --coral:#F2542D;   /* TodoAI accent */
+
+    --he:'Heebo',-apple-system,'Segoe UI',Arial,sans-serif;
+    --serif:'Fraunces',Georgia,'Times New Roman',serif;
+    --mono:ui-monospace,Menlo,'SF Mono',monospace;
+
+    --pad:clamp(20px,5vw,40px);
+    --maxw:1080px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--he);
+    background:var(--void);
+    color:var(--cream);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    position:relative;
+  }
+  /* The hero keeps the film wide open. Below it the long-form copy needs a floor,
+     so a scrim fades in right after the fold and holds contrast all the way down. */
+  body::before{
+    content:'';position:absolute;left:0;right:0;top:100svh;bottom:0;
+    z-index:-1;pointer-events:none;
+    background:linear-gradient(180deg,
+      rgba(11,9,6,0) 0,
+      rgba(11,9,6,.70) 300px,
+      rgba(11,9,6,.86) 900px,
+      rgba(11,9,6,.90) 100%);
+  }
+
+  /* ══ language switching ══
+     every translatable node carries .en / .he; the root lang decides which shows */
+  html[lang="en"] .he{display:none!important}
+  html[lang="he"] .en{display:none!important}
+  html[lang="he"] .num-ltr{direction:ltr;unicode-bidi:isolate;display:inline-block}
+
+  /* ══ background film ══ */
+  .bg{position:fixed;inset:0;z-index:-2;overflow:hidden;background:var(--void)}
+  .bg video,.bg img{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(1.08);
+    min-width:100%;min-height:100%;width:auto;height:auto;
+    object-fit:cover;
+    /* the 50% blur Avihai asked for: the scene reads, the detail does not compete */
+    filter:blur(13px) saturate(1.2) contrast(1.05);
+    opacity:1;
+  }
+  /* one veil, tuned so text stays legible but the frame is clearly visible.
+     The bright spot sits opposite the copy, so it flips with the writing direction. */
+  .bg::after{
+    content:'';position:absolute;inset:0;
+    background:
+      linear-gradient(180deg,rgba(11,9,6,.62) 0%,rgba(11,9,6,.50) 30%,rgba(11,9,6,.66) 62%,rgba(11,9,6,.84) 100%),
+      radial-gradient(130% 70% at 78% 22%,rgba(11,9,6,0) 0%,rgba(11,9,6,.58) 100%);
+  }
+  html[dir="rtl"] .bg::after{
+    background:
+      linear-gradient(180deg,rgba(11,9,6,.62) 0%,rgba(11,9,6,.50) 30%,rgba(11,9,6,.66) 62%,rgba(11,9,6,.84) 100%),
+      radial-gradient(130% 70% at 22% 22%,rgba(11,9,6,0) 0%,rgba(11,9,6,.58) 100%);
+  }
+  /* faint film grain so the blur does not read as a smudge */
+  .grain{
+    position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ══ top bar ══ */
+  .bar{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    padding:14px var(--pad);
+    background:linear-gradient(180deg,rgba(11,9,6,.92),rgba(11,9,6,0));
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  }
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+  .brand img{width:30px;height:30px;border-radius:8px;display:block}
+  .brand span{font-size:15px;font-weight:800;color:var(--cream);letter-spacing:-.2px}
+
+  .lang{display:flex;border:1px solid var(--line-2);border-radius:4px;overflow:hidden}
+  .lang button{
+    font-family:var(--mono);font-size:11px;letter-spacing:.1em;font-weight:600;
+    padding:7px 13px;background:transparent;color:var(--muted);
+    border:0;cursor:pointer;transition:background .18s,color .18s;
+  }
+  .lang button:hover{color:var(--cream)}
+  .lang button[aria-pressed="true"]{background:var(--gold);color:var(--void)}
+
+  /* ══ layout ══ */
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+  section{padding-block:clamp(56px,9vw,104px)}
+  .eyebrow{
+    font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--gold);margin-bottom:18px;
+  }
+  h2{
+    font-family:var(--serif);font-weight:600;
+    font-size:clamp(26px,4.4vw,40px);line-height:1.12;letter-spacing:-.5px;
+    margin-bottom:16px;
+  }
+  html[lang="he"] h2{font-family:var(--he);font-weight:800;letter-spacing:-.8px}
+  .lede{font-size:clamp(16px,2vw,18.5px);color:var(--sand);max-width:62ch;font-weight:300}
+  .rule{height:1px;background:var(--line);border:0}
+
+  /* ══ interactive map ══
+     iframe ולא הטמעה ישירה: המפה מביאה איתה CSS גלובלי משלה (.city-label,
+     header.hud) ומחליפה dir/lang על שורש המסמך. iframe מבודד את זה לגמרי.
+     loading=lazy כי אין טעם לשלם על המפה למי שלא גלל עד לכאן. */
+  #map-mount{margin-top:clamp(24px,4vw,40px)}
+  #map-mount iframe{
+    display:block;width:100%;aspect-ratio:16/10;min-height:420px;
+    border:1px solid var(--line-2);background:var(--stone);
+  }
+  .map-note{margin-top:12px;font-size:13px;color:var(--muted)}
+  @media (max-width:600px){ #map-mount iframe{aspect-ratio:3/4} }
+
+  /* ══ hero ══ */
+  .hero{
+    min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+    padding-block:clamp(96px,14vh,150px) clamp(48px,8vh,84px);
+  }
+  .hero .kicker{
+    font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--coral);font-weight:700;margin-bottom:22px;
+  }
+  .hero h1{
+    font-family:var(--serif);font-weight:700;
+    font-size:clamp(42px,9vw,86px);line-height:.98;letter-spacing:-2.5px;
+    text-wrap:balance;
+  }
+  html[lang="he"] .hero h1{font-family:var(--he);font-weight:900;letter-spacing:-2px;line-height:1.05}
+  .hero h1 em{
+    display:block;font-style:normal;font-size:.42em;font-weight:400;
+    letter-spacing:.02em;color:var(--gold-lit);margin-top:18px;line-height:1.3;
+  }
+  html[lang="he"] .hero h1 em{font-weight:500;font-size:.4em}
+  .hero .sub{
+    margin-top:26px;font-size:clamp(16px,2.1vw,19px);color:var(--sand);
+    max-width:56ch;font-weight:300;
+  }
+
+  .facts{
+    display:flex;flex-wrap:wrap;gap:0;margin-top:44px;
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  }
+  .fact{
+    flex:1 1 150px;padding:20px 22px 18px;
+    border-inline-end:1px solid var(--line);
+  }
+  .fact:last-child{border-inline-end:0}
+  @media(max-width:620px){ /* stack cleanly rather than leaving a lone tile on its own row */
+    .fact{flex:1 1 100%;border-inline-end:0;border-bottom:1px solid var(--line)}
+    .fact:last-child{border-bottom:0}
+  }
+  .fact .v{
+    font-family:var(--mono);font-size:23px;font-weight:700;color:var(--gold-lit);line-height:1;
+    display:flex;align-items:center;gap:10px;
+  }
+  .fact .v .ico{ /* widescreen glyph, so the 16:9 reads at a glance */
+    width:26px;height:17px;flex:none;
+    fill:none;stroke:currentColor;stroke-width:2;opacity:.85;
+  }
+  .fact .k{font-size:12.5px;color:var(--muted);margin-top:9px;letter-spacing:.02em}
+
+  /* the default focus ring is bright blue and fights the palette */
+  .lang button:focus-visible,.btn:focus-visible,.brand:focus-visible{
+    outline:2px solid var(--gold-lit);outline-offset:3px;
+  }
+
+  /* ══ tribute ══ */
+  .tribute{
+    border-inline-start:2px solid var(--gold);
+    padding:6px 0 6px 28px;margin-top:8px;
+  }
+  html[dir="rtl"] .tribute{padding:6px 28px 6px 0}
+  .tribute p{
+    font-family:var(--serif);font-size:clamp(17px,2.4vw,21px);line-height:1.62;
+    color:var(--cream);font-weight:400;max-width:64ch;
+  }
+  html[lang="he"] .tribute p{font-family:var(--he);font-weight:400}
+  .tribute p + p{margin-top:18px}
+  .tribute b{color:var(--gold-lit);font-weight:600}
+
+  /* ══ what the film includes ══ */
+  ul.feat{list-style:none;margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:11px 30px}
+  @media(max-width:640px){ul.feat{grid-template-columns:1fr}}
+  ul.feat li{position:relative;padding-inline-start:24px;font-size:14.5px;color:var(--cream)}
+  ul.feat li::before{
+    content:'✓';position:absolute;inset-inline-start:0;top:0;
+    color:var(--coral);font-weight:800;font-size:13px;
+  }
+
+  /* ══ cta + signature ══ */
+  .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;text-decoration:none;
+    font-size:14.5px;font-weight:700;padding:14px 26px;border-radius:4px;
+    transition:transform .18s,filter .18s;
+  }
+  .btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
+  .btn.primary{background:var(--coral);color:#fff}
+  .btn.ghost{border:1px solid var(--line-2);color:var(--cream);background:rgba(20,16,9,.6)}
+
+  .sig{margin-top:52px;padding-top:30px;border-top:1px solid var(--line)}
+  .sig .nm{font-size:17px;font-weight:800;color:var(--cream)}
+  .sig .ti{font-size:13.5px;color:var(--muted);margin-top:4px}
+  .sig .ln{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px 20px}
+  .sig .ln a{color:var(--coral);text-decoration:none;font-size:13.5px;font-weight:500}
+  .sig .ln a:hover{text-decoration:underline}
+
+  footer{
+    padding:26px var(--pad) 44px;text-align:center;
+    font-size:11.5px;color:var(--faint);border-top:1px solid var(--line);
+  }
+  footer span{margin-inline:8px}
+</style>
+</head>
+<body>
+
+<div class="bg">
+  <img src="assets/poster.jpg" alt="" id="bgposter">
+  <video src="assets/bg.mp4" autoplay muted loop playsinline poster="assets/poster.jpg" id="bgvideo"></video>
+</div>
+<div class="grain"></div>
+
+<div class="bar">
+  <a class="brand" href="https://todowith.ai/" target="_blank" rel="noopener">
+    <img src="https://avihai24n-oss.github.io/webinar/assets/todoai-icon.png" width="30" height="30" alt="TodoAI">
+    <span>TodoAI Studio</span>
+  </a>
+  <div class="lang" role="group" aria-label="Language">
+    <button type="button" data-lang="en" aria-pressed="true">EN</button>
+    <button type="button" data-lang="he" aria-pressed="false">עב</button>
+  </div>
+</div>
+
+<!-- ════ HERO ════ -->
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker"><span class="en">A Cinematic Trailer</span><span class="he">טריילר קולנועי</span></p>
+
+    <h1>
+      <span class="en">Doña Gracia Nasi<em>The most important Jewish woman you have never heard of.</em></span>
+      <span class="he">דוֹנָה גְרַסְיָה נָשִׂיא<em>האישה היהודייה החשובה ביותר שמעולם לא שמעתם עליה.</em></span>
+    </h1>
+
+    <p class="sub">
+      <span class="en">She financed kings, rescued thousands from the Inquisition, and dared to declare a boycott on the Pope. Four hundred years before Herzl, she bought an entire city in the Land of Israel. A cinematic trailer carrying the peaks of that life, end to end.</span>
+      <span class="he">היא מימנה מלכים, הצילה אלפי אנוסים מהאינקוויזיציה, והעזה להכריז חרם על האפיפיור. 400 שנה לפני הרצל היא קנתה עיר שלמה בארץ ישראל. טריילר קולנועי שנושא את שיאי החיים האלה, מקצה לקצה.</span>
+    </p>
+
+    <div class="facts">
+      <div class="fact">
+        <div class="v"><span class="en">&asymp; 4&ndash;5 min</span><span class="he">&asymp; 4&ndash;5 דק׳</span></div>
+        <div class="k"><span class="en">Estimated runtime</span><span class="he">אורך משוער</span></div>
+      </div>
+      <div class="fact">
+        <div class="v">
+          <svg class="ico" viewBox="0 0 34 22" aria-hidden="true"><rect x="1.2" y="1.2" width="31.6" height="19.6" rx="2.6"/></svg>16:9
+        </div>
+        <div class="k">
+          <span class="en">Widescreen &middot; 1920 &times; 1080</span>
+          <span class="he">מסך רוחב &middot; <span class="num-ltr">1920 &times; 1080</span></span>
+        </div>
+      </div>
+      <div class="fact">
+        <div class="v">EN</div>
+        <div class="k"><span class="en">Narration &amp; subtitles</span><span class="he">קריינות וכתוביות</span></div>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<!-- ════ MAP ════ -->
+<section id="map">
+  <div class="wrap">
+    <p class="eyebrow"><span class="en">Her world</span><span class="he">העולם שלה</span></p>
+    <h2><span class="en">Where the story goes</span><span class="he">לאן הסיפור נוסע</span></h2>
+    <p class="lede">
+      <span class="en">Lisbon, Antwerp, Venice, Ferrara, Constantinople, Ancona, Tiberias — one lifetime, seven cities, and a rescue network running between them.</span>
+      <span class="he">ליסבון, אנטוורפן, ונציה, פרארה, קושטא, אנקונה, טבריה — חיים אחדים, שבע ערים, ורשת הצלה שנעה ביניהן.</span>
+    </p>
+
+    <!-- ▼▼▼ INTERACTIVE MAP ▼▼▼
+         assets/map.html הוא פלט בנייה של `node build.mjs --publish` מתוך map-app/.
+         העמוד הזה רק מטמיע אותו — אותו קובץ בדיוק שמשרת את index.html. -->
+    <div id="map-mount">
+      <iframe src="assets/map.html" loading="lazy" allow="fullscreen"
+              title="Doña Gracia — interactive journey map"></iframe>
+      <p class="map-note">
+        <span class="en">Click “Begin the journey” — the map opens full screen. Esc to come back.</span>
+        <span class="he">לחצו “התחל את המסע” — המפה נפתחת למסך מלא. Esc לחזרה.</span>
+      </p>
+    </div>
+    <!-- ▲▲▲ END MAP ▲▲▲ -->
+
+  </div>
+</section>
+
+<!-- ════ TRIBUTE ════ -->
+<section id="why">
+  <div class="wrap">
+    <p class="eyebrow"><span class="en">Why this one</span><span class="he">למה דווקא זה</span></p>
+    <h2><span class="en">We believe this is going to be big</span><span class="he">אנחנו מאמינים שזה הולך להיות משהו גדול</span></h2>
+    <div class="tribute">
+      <p>
+        <span class="en">Doña Gracia should be a household name. She ran one of the largest fortunes in Europe, built an underground rescue network centuries before the term existed, stood alone against a Pope, and bought a city in the Land of Israel three hundred and fifty years before the First Zionist Congress. Most people have never heard of her.</span>
+        <span class="he">דונה גרציה הייתה צריכה להיות שם שכל אחד מכיר. היא ניהלה אחד מההונות הגדולים באירופה, בנתה רשת הצלה מחתרתית מאות שנים לפני שהמונח נולד, עמדה לבדה מול אפיפיור, וקנתה עיר בארץ ישראל 350 שנה לפני הקונגרס הציוני הראשון. רוב האנשים מעולם לא שמעו עליה.</span>
+      </p>
+      <p>
+        <span class="en">We are not taking this on as another piece of content. We believe this is going to travel, that it will move people, and that it will put Doña Gracia where she has always belonged. <b>That is why we want to make it properly.</b></span>
+        <span class="he">אנחנו לא ניגשים לזה כעוד תוכן. אנחנו מאמינים שזה יתפשט, שזה ירגש אנשים, ושזה ישים את דונה גרציה במקום שתמיד הגיע לה. <b>בדיוק בגלל זה אנחנו רוצים לעשות את זה כמו שצריך.</b></span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ════ WHAT THE FILM IS ════ -->
+<section id="film">
+  <div class="wrap">
+    <p class="eyebrow"><span class="en">The film</span><span class="he">הסרט</span></p>
+    <h2><span class="en">What it is</span><span class="he">מה זה</span></h2>
+    <p class="lede">
+      <span class="en">A finished cinematic trailer of about four to five minutes, animated throughout, with recorded narration, original score and English subtitles. It is also cut into short clips for social media.</span>
+      <span class="he">טריילר קולנועי מוגמר של כ-4&ndash;5 דקות, מונפש לכל אורכו, עם קריינות מוקלטת, מוזיקה מקורית וכתוביות באנגלית. בנוסף הוא נחתך לקליפים קצרים לרשתות.</span>
+    </p>
+
+    <ul class="feat">
+      <li><span class="en">Final trailer in widescreen 16:9, 1920 &times; 1080</span><span class="he">טריילר סופי במסך רוחב 16:9, <span class="num-ltr">1920 &times; 1080</span></span></li>
+      <li><span class="en">English narration, script locked</span><span class="he">קריינות באנגלית, תסריט נעול</span></li>
+      <li><span class="en">Burned-in English subtitles</span><span class="he">כתוביות באנגלית צרובות</span></li>
+      <li><span class="en">Original cinematic score</span><span class="he">מוזיקה קולנועית מקורית</span></li>
+      <li><span class="en">Every shot animated with real camera motion</span><span class="he">כל שוט מונפש בתנועת מצלמה אמיתית</span></li>
+      <li><span class="en">Closing card with your logo and dedication</span><span class="he">כרטיס סיום עם הלוגו וההקדשה שלכם</span></li>
+    </ul>
+
+    <div class="cta">
+      <a class="btn primary" href="https://wa.me/972542064301" target="_blank" rel="noopener">
+        <span class="en">Talk to us</span><span class="he">דברו איתנו</span>
+      </a>
+      <a class="btn ghost" href="https://todowith.ai/" target="_blank" rel="noopener">
+        <span class="en">About TodoAI Studio</span><span class="he">על TodoAI Studio</span>
+      </a>
+    </div>
+
+    <div class="sig">
+      <div class="nm"><span class="en">Avihai Elnekave</span><span class="he">אביחי אלנקווה</span></div>
+      <div class="ti">Co-Founder &amp; AI Lead, TodoAI Studio</div>
+      <div class="ln">
+        <a href="https://wa.me/972542064301" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://todowith.ai/" target="_blank" rel="noopener">todowith.ai</a>
+        <a href="https://instagram.com/todoai.il" target="_blank" rel="noopener">@todoai.il</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>&copy; 2026 TodoAI Studio</span><span>&middot;</span>
+  <span class="en">In memory and honor of Doña Gracia — Hana Nasi, of blessed memory</span>
+  <span class="he">לזכרה ולכבודה של דונה גרציה — חנה נשיא ז״ל</span>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ── language ── */
+  var buttons = Array.prototype.slice.call(document.querySelectorAll(".lang button"));
+  function setLang(lang){
+    var root = document.documentElement;
+    root.setAttribute("lang", lang);
+    root.setAttribute("dir", lang === "he" ? "rtl" : "ltr");
+    buttons.forEach(function(b){
+      b.setAttribute("aria-pressed", b.dataset.lang === lang ? "true" : "false");
+    });
+    try { localStorage.setItem("dg-lang", lang); } catch (e) {}
+  }
+  buttons.forEach(function(b){
+    b.addEventListener("click", function(){ setLang(b.dataset.lang); });
+  });
+
+  var saved = null;
+  try { saved = localStorage.getItem("dg-lang"); } catch (e) {}
+  setLang(saved === "he" ? "he" : "en");
+
+  /* ── swap the poster out once the loop is actually playing ── */
+  var vid = document.getElementById("bgvideo");
+  var poster = document.getElementById("bgposter");
+  function hidePoster(){ poster.style.display = "none"; }
+  if (vid.readyState >= 3) hidePoster();
+  vid.addEventListener("playing", hidePoster, { once:true });
+})();
+</script>
+</body>
+</html>
